@@ -13,17 +13,6 @@ def process_channel(dataframe, time_series_name, data_series_name, transform_fun
     return tc.assimilate_channel(time_series, data_series)
 
 
-# Creates a channel object with the given parameters
-def create_channel(name, short_name, unit, data, frequency):
-    return Channel(
-        frequency=frequency,
-        name=name,
-        short_name=short_name,
-        unit=unit,
-        data=data
-    )
-
-
 if __name__ == "__main__":
     # Load the data from the CANbus CSV file
     can_dataframe = pd.read_csv('Data/Converted CANbus Data/758.csv')
@@ -81,7 +70,13 @@ if __name__ == "__main__":
     # Loop through the channels, process them, and add them to the MoTeC file
     for name, short_name, unit, data_series_name, transform_function in channels_info:
         data, frequency = process_channel(can_dataframe, 'timestamp', data_series_name, transform_function)
-        channel = create_channel(name, short_name, unit, data, frequency)
+        channel = Channel(
+            frequency=frequency,
+            name=name,
+            short_name=short_name,
+            unit=unit,
+            data=data
+        )
         motec_file.add_channels(channel)
 
     # Write the MoTeC file to the output.ld file
