@@ -70,13 +70,7 @@ if __name__ == "__main__":
     # Loop through the channels, process them, and add them to the MoTeC file
     for name, short_name, unit, data_series_name, transform_function in channels_info:
         data, frequency = process_channel(can_dataframe, 'timestamp', data_series_name, transform_function)
-        channel = Channel(
-            frequency=frequency,
-            name=name,
-            short_name=short_name,
-            unit=unit,
-            data=data
-        )
+        channel = Channel(frequency, name, short_name, unit, data)
         motec_file.add_channels(channel)
 
     # Write the MoTeC file to the output.ld file
