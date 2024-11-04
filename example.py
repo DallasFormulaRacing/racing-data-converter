@@ -54,7 +54,6 @@ if __name__ == "__main__":
         ('Analog Input #8', 'AI8', 'V', 'Analog Input #8', None)
     ]
 
-    print(len(channels_info))
     # Create the MoTeC file object
     motec_file = File()
     motec_file.Time = time.localtime(can_dataframe['timestamp'][0])
