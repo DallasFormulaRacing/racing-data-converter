@@ -59,7 +59,7 @@ canMessages = {
     ],
     218103368: ["Fuel Comp-Barometer", "Fuel Comp-MAP"],
 
-} # Wait, was there not supposed to be a bracket here??? - Gino
+}
 
 class pressure_type(Enum):
     """The pressure unit type."""
