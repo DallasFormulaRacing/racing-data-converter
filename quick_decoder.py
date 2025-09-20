@@ -12,7 +12,7 @@ for msg in tqdm(CSVReader(file)):
 
     try:
         new_df = pd.DataFrame({"timestamp": msg.timestamp, **data.to_dict()}, index=[0])
-    except:
+    except Exception:
         continue
     df = pd.concat([df, new_df])
 
